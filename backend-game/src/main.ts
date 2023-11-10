@@ -1,9 +1,15 @@
+enum team {
+  blue = 1,
+  red = 2,
+}
+
 type Warrior = {
   health: number
   attack: number
-  team: number // Identifies the team of the warrior (1 or 2)
+  team: team // Identifies the team of the warrior (1 or 2)
   x: number // X-coordinate on the field
   y: number // Y-coordinate on the field
+  name?: string
 }
 
 class GameField {
@@ -38,7 +44,7 @@ class GameField {
     if (newY >= 0 && newY < this.height && this.isPositionFree(newX, newY)) {
       warrior.x = newX
       warrior.y = newY
-      console.log(`Warrior from Team ${warrior.team} moves to (${warrior.x}, ${warrior.y})`)
+      console.log(`Warrior ${warrior.name} from Team ${warrior.team} moves to (${warrior.x}, ${warrior.y})`)
       return true
     } else {
       return false
@@ -50,7 +56,7 @@ class GameField {
     const enemy = this.isEnemyNearby(warrior)
     if (enemy) {
       enemy.health -= warrior.attack
-      console.log(`Warrior from Team ${warrior.team} attacks an enemy from Team ${enemy.team}`)
+      console.log(`Warrior ${warrior.name} from Team ${warrior.team} attacks an enemy ${enemy.name} from Team ${enemy.team}`)
       return true
     } else {
       return false
@@ -62,7 +68,6 @@ class GameField {
     let actionOccurred = false
 
     this.warriors.forEach((warrior) => {
-      const initialPosition = { x: warrior.x, y: warrior.y }
       const isMove = this.moveWarrior(warrior)
       const isAttack = this.attackIfPossible(warrior)
 
@@ -92,15 +97,28 @@ class GameField {
       actionOccurred = this.simulateTick()
     } while (!this.isGameOver(actionOccurred))
 
-    const winningTeam = this.warriors.length > 0 ? this.warriors[0].team : 'None'
+    // Counting remaining warriors of each team
+    const teamCounts = this.warriors.reduce((counts: Record<string, number>, warrior) => {
+      console.log(`Warrior ${warrior.name} from Team ${warrior.team} is alive`)
+
+      counts[warrior.team] = (counts[warrior.team] || 0) + 1
+      return counts
+    }, {})
+
+    console.log(teamCounts)
+
+    // Determining the winning team based on the number of remaining warriors
+    const winningTeam = Object.keys(teamCounts).reduce((a, b) => (teamCounts[a] > teamCounts[b] ? a : b), 'None')
+
     console.log(`Game Over. Winning team: ${winningTeam}`)
   }
 }
 
 // Example of usage
 const initialWarriors: Warrior[] = [
-  { health: 100, attack: 10, team: 1, x: 0, y: 0 },
-  { health: 200, attack: 10, team: 2, x: 0, y: 8 },
+  { health: 100, attack: 10, team: team.blue, x: 0, y: 0, name: 'first1' },
+  { health: 10, attack: 10, team: team.red, x: 0, y: 8, name: 'first2' },
+  { health: 10, attack: 10, team: team.red, x: 8, y: 8, name: 'second2' },
 ]
 
 const game = new GameField(initialWarriors)
