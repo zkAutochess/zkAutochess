@@ -10,27 +10,28 @@
 - 💰 **Item**: Text
 
 ## Contents
-- [Hackathon bounties](#hackathon-bounties)
+- [Contents](#contents)
+- [Diagram](#diagram)
 - [Links](#links)
+- [Hackathon bounties](#hackathon-bounties)
 - [Team](#team)
 
 
 ## Diagram
 ![diagram](https://docs.aztec.network/assets/ideal-img/uniswap_flow.38b8805.1030.png)
 
-## Hackathon bounties
-
-TODO
 
 ## Links
-
 - [Devfolio]()
 - [Demo video]()
 - [Deployed contract on Scroll]()
 - [Deployed contract on Mantle]()
 
-## Team
+- 
+## Hackathon bounties
+TODO
 
+## Team
 This project was build at ZK Hack Istanbul 2023 by:
 
 - [name]()
