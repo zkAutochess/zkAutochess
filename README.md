@@ -2,7 +2,7 @@
 
 🫣 zkAutochess is an autobattler game using zk to keep players' choices hidden from their oppononents.
 
-⚙️ Built using [TODO] and [TODO].
+⚙️ Built using [TODO], [TODO], Python and Flask.
 
 - 🔥 **Item**: Text
 - 📩 **Item**: Text

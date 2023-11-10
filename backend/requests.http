@@ -1,0 +1,48 @@
+### Start a game with 2 players
+
+POST http://127.0.0.1:5000/start_game 
+content-type: application/json
+
+{
+    "player1": "0xACcEDD697d3b0e52e049C0D20fD6Be906F874DE5",
+    "player2": "0x69040FF923BA3a997c2F5a2020385b3904671f63"
+} 
+
+### Provide input
+POST http://127.0.0.1:5000/provide_input
+content-type: application/json
+
+{
+    "game_id": 1,
+    "player": "0xACcEDD697d3b0e52e049C0D20fD6Be906F874DE5",
+
+    "assets": 
+    [   
+        {
+            "type": "warrior", 
+            "row": 0, 
+            "col": 0
+        },
+        {
+            "type": "warrior", 
+            "row": 0, 
+            "col": 1
+        },
+        {
+            "type": "warrior", 
+            "row": 0, 
+            "col": 3
+        },
+        {
+            "type": "warrior", 
+            "row": 0, 
+            "col": 4
+        },
+        {
+            "type": "warrior", 
+            "row": 0, 
+            "col": 5
+        }
+    ]
+
+} 
