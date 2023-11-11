@@ -1,0 +1,54 @@
+.header {
+  padding: 32px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media screen and (max-width: 500px) {
+  .header {
+    padding: 23px 0px;
+  }
+}
+.header-logo {
+  display: flex;
+  align-items: center;
+  width: 240px;
+}
+.header-logo a {
+  display: flex;
+}
+@media screen and (max-width: 500px) {
+  .header-logo {
+    width: 50px;
+  }
+  .header-logo svg path:not(:first-child) {
+    display: none;
+  }
+}
+.header-wallet {
+  width: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.header-navigation {
+  display: flex;
+  align-items: center;
+  opacity: 0.5;
+}
+/* @media screen and (max-width: 1100px) {
+  .header-navigation {
+    display: none;
+  }
+} */
+.header-navigation-item {
+  font-family: 'Proto Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
+}
+.header-navigation-item:not(:last-child) {
+  margin-right: 40px;
+}

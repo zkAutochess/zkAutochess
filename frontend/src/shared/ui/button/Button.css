@@ -1,0 +1,41 @@
+.button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  font-family: 'Proto Mono';
+}
+.button_view_orange {
+  font-style: normal;
+  font-weight: 500;
+  background: #FF7A00;
+  border-radius: 8px;
+  color: #FFFFFF;
+}
+.button_view_orange:disabled {
+  background: #929292;
+}
+.button_view_dark {
+  font-style: normal;
+  font-weight: 400;
+  background: #1D1D1D;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #FFFFFF;
+}
+.button_size_m {
+  padding: 13px 10px;
+  font-size: 16px;
+  line-height: 19px;
+}
+.button_size_l {
+  padding: 20px 60px;
+  font-size: 20px;
+  line-height: 24px;
+}
+@media screen and (max-width: 500px) {
+  .button_size_l {
+    font-size: 14px;
+    line-height: 17px;
+    padding: 15px 60px;
+  }
+}

@@ -52,32 +52,37 @@ export class GameField {
     }
   }
 
-  private attackIfPossible(warrior: Warrior): boolean {
-    const enemy = this.isEnemyNearby(warrior)
-    if (enemy) {
-      enemy.health -= warrior.attack
-      console.log(`Warrior ${warrior.id} from Team ${warrior.team} attacks an enemy ${enemy.id} from Team ${enemy.team}`)
-      return true
-    } else {
-      return false
-    }
-  }
-
   public simulateTick(): boolean {
     let actionOccurred = false
 
+    // Перемещаем всех воинов
     this.warriors.forEach((warrior) => {
-      const isMove = this.moveWarrior(warrior)
-      const isAttack = this.attackIfPossible(warrior)
-
-      if (isMove || isAttack) {
+      if (this.moveWarrior(warrior)) {
         actionOccurred = true
       }
     })
 
+    // Проводим атаки после всех перемещений
+    const attacks = this.warriors.map((warrior) => this.attackIfPossible(warrior))
+    if (attacks.some((attack) => attack)) {
+      actionOccurred = true
+    }
+
+    // Проверяем состояние воинов после атак
     this.warriors = this.warriors.filter((warrior) => warrior.health > 0)
 
     return actionOccurred
+  }
+
+  private attackIfPossible(warrior: Warrior): boolean {
+    const enemy = this.isEnemyNearby(warrior)
+    if (enemy) {
+      // Применяем урон к врагу
+      enemy.health -= warrior.attack
+      // Также возвращаем true, если враг также атакует в ответ (синхронная атака)
+      return true
+    }
+    return false
   }
 
   public isGameOver(lastTickAction: boolean): boolean {
@@ -178,6 +183,10 @@ export class GameRoom {
   } {
     return this.gameField.getGameStates()
   }
+
+  public getPlayersCount(): number {
+    return this.playersCount
+  }
 }
 
 export class GameManager {
@@ -219,5 +228,11 @@ export class GameManager {
 
   private generateRoomId(): string {
     return Math.random().toString(36).substring(2, 9)
+  }
+
+  public getAvailableRooms(): string[] {
+    return Object.entries(this.rooms)
+      .filter(([roomId, room]) => room.getPlayersCount() < 2)
+      .map(([roomId, room]) => roomId)
   }
 }
