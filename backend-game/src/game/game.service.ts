@@ -1,4 +1,5 @@
 import { GameState, TeamEnum, Warrior, WarriorInput, WarriorState, WinnerEnum } from './game.interface'
+import fs from 'fs'
 
 export class GameField {
   private warriors: Warrior[] = []
@@ -12,6 +13,27 @@ export class GameField {
     winner: WinnerEnum.None,
   }
   private nextWarriorId: number = 0
+
+  public getFieldStateJsonArray(): {
+    array: {
+      int: number
+    }[]
+  }[] {
+    // Создаем пустое поле
+    const field: string[][] = Array.from({ length: this.height }, () => Array(this.width).fill('0'))
+
+    // Размещаем воинов на поле
+    for (const warrior of this.warriors) {
+      field[warrior.y][warrior.x] = warrior.team === TeamEnum.Blue ? '1' : '2'
+    }
+
+    // Преобразуем поле в требуемый JSON формат
+    return field.map((row) => {
+      return {
+        array: row.map((cell) => ({ int: parseInt(cell) })),
+      }
+    })
+  }
 
   public addWarrior(warriorInput: WarriorInput) {
     const newWarrior: Warrior = {
@@ -94,6 +116,14 @@ export class GameField {
     this.logField() // Log initial state
     let tickCount = 0
     let actionOccurred: boolean
+
+    const fieldStateJsonArray = this.getFieldStateJsonArray()
+    fs.writeFile('file.json', JSON.stringify(fieldStateJsonArray), (err) => {
+      if (err) {
+        console.log('Error writing file', err)
+      }
+      console.log('JSON array is saved.')
+    })
 
     do {
       console.log(`Tick ${++tickCount}`)
