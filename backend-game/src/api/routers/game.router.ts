@@ -29,6 +29,7 @@ ApiRoute.post('/room/:roomId/join', async (req, res, next) => {
     next(err)
   }
 })
+
 // Роут для получения состояния комнаты
 ApiRoute.get('/room/:roomId/state', async (req, res, next) => {
   try {
@@ -43,6 +44,15 @@ ApiRoute.get('/room/:roomId/state', async (req, res, next) => {
     } else {
       res.status(404).send('Room not found')
     }
+  } catch (err: any) {
+    next(err)
+  }
+})
+
+ApiRoute.get('/rooms/available', async (req, res, next) => {
+  try {
+    const availableRooms = gameManager.getAvailableRooms()
+    res.json(availableRooms)
   } catch (err: any) {
     next(err)
   }

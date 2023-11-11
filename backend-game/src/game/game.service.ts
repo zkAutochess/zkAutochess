@@ -178,6 +178,10 @@ export class GameRoom {
   } {
     return this.gameField.getGameStates()
   }
+
+  public getPlayersCount(): number {
+    return this.playersCount
+  }
 }
 
 export class GameManager {
@@ -219,5 +223,11 @@ export class GameManager {
 
   private generateRoomId(): string {
     return Math.random().toString(36).substring(2, 9)
+  }
+
+  public getAvailableRooms(): string[] {
+    return Object.entries(this.rooms)
+      .filter(([roomId, room]) => room.getPlayersCount() < 2)
+      .map(([roomId, room]) => roomId)
   }
 }
