@@ -34,7 +34,7 @@ const Cell = styled.div<{ disabled?: boolean; character_id?: string | number }>`
     cursor: ${(props) => (props.character_id ? 'not-allowed' : 'auto')};
 
     &:hover {
-        background-color: ${(props) => (props.disabled ? '#000' : '#f0f0f0')};
+        // background-color: ${(props) => (props.disabled ? '#000' : '#f0f0f0')};
     }
 `
 
@@ -77,7 +77,7 @@ export const GameBoard: FC<any> = ({ type = 'create' }) => {
                         character.position.x === colIndex && character.position.y === rowIndex,
                 )
 
-                if ((type === 'create' && rowIndex > 4) || (type === 'join' && rowIndex < 4)) {
+                if ((type === 'create' && rowIndex >= 4) || (type === 'join' && rowIndex < 4)) {
                     return (
                         <Cell disabled key={`${rowIndex}-${colIndex}`}>
                             {character ? character.name : null}

@@ -1,5 +1,6 @@
+import { usePrivy } from '@privy-io/react-auth'
 import { useGameFormStore } from 'entities/game-form'
-import { FC, useCallback } from 'react'
+import { FC, useCallback, useMemo } from 'react'
 import { useNavigate } from 'react-router'
 import { createRoom } from 'shared/api'
 import { Button, CharacterPool, GameBoard, Title } from 'shared/ui'
@@ -20,24 +21,27 @@ const charactersPool: { name: string }[] = [
 ]
 
 export const GameForm: FC = () => {
+    const { user } = usePrivy()
+
+    const address = useMemo(() => user?.wallet?.address, [user])
     const navigate = useNavigate()
     const characters = useGameFormStore((state) => state.characters)
     const clearCharacter = useGameFormStore((state) => state.clearCharacter)
 
     const clickHandler = useCallback(async () => {
         const { roomId } = await createRoom({
-            playerId: 'test',
+            playerId: address as string,
             warriors: characters.map((character) => character.position),
         })
 
         clearCharacter()
 
         navigate(`/game/${roomId}`)
-    }, [characters, navigate, clearCharacter])
+    }, [characters, navigate, clearCharacter, address])
 
     return (
         <GameContainer>
-            <div>
+            <div style={{ marginTop: 100 }}>
                 <Title>Create room</Title>
 
                 <div style={{ marginTop: 30 }}>
@@ -45,7 +49,7 @@ export const GameForm: FC = () => {
                 </div>
 
                 <div style={{ marginTop: 50 }}>
-                    <Button onClick={clickHandler} view="orange" size="m">
+                    <Button disabled={!address} onClick={clickHandler} view="orange" size="m">
                         Create
                     </Button>
                 </div>

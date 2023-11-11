@@ -1,5 +1,6 @@
+import { usePrivy } from '@privy-io/react-auth'
 import { useGameFormStore } from 'entities/game-form'
-import { FC, useCallback } from 'react'
+import { FC, useCallback, useMemo } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { createRoom, joinRoom } from 'shared/api'
 import { Button, CharacterPool, GameBoard, Title } from 'shared/ui'
@@ -20,6 +21,10 @@ const charactersPool: { name: string }[] = [
 ]
 
 export const JoinForm: FC = () => {
+    const { user } = usePrivy()
+
+    const address = useMemo(() => user?.wallet?.address, [user])
+
     const { id: roomId } = useParams() as { id: string }
     const navigate = useNavigate()
     const characters = useGameFormStore((state) => state.characters)
@@ -27,18 +32,18 @@ export const JoinForm: FC = () => {
 
     const clickHandler = useCallback(async () => {
         await joinRoom(roomId, {
-            playerId: 'test2',
+            playerId: address as string,
             warriors: characters.map((character) => character.position),
         })
 
         clearCharacter()
 
         navigate(`/game/${roomId}`)
-    }, [characters, navigate, roomId, clearCharacter])
+    }, [characters, navigate, roomId, clearCharacter, address])
 
     return (
         <GameContainer>
-            <div>
+            <div style={{ marginTop: 100 }}>
                 <Title>Join room</Title>
 
                 <div style={{ marginTop: 30 }}>
@@ -46,7 +51,7 @@ export const JoinForm: FC = () => {
                 </div>
 
                 <div style={{ marginTop: 50 }}>
-                    <Button onClick={clickHandler} view="orange" size="m">
+                    <Button disabled={!address} onClick={clickHandler} view="orange" size="m">
                         Join
                     </Button>
                 </div>
