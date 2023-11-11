@@ -6,7 +6,7 @@
 
 ⚙️ Built using [TODO], [TODO], Python and Flask.
 
-- 🧾 **ZK proofs**: Players commit and hash their strategy on-chain.
+- 🧾 **ZK proofs**: Players commit and hash their strategy privately on-chain.
 - ⛓️ **Smart contracts**: Verifies strategies and distributes tokens to winner.
 - 🖼️ **Frontend**: Game is generated in browser based on strategies.
 
