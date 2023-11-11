@@ -1,4 +1,6 @@
-# 🎮♟️ =nil; chronicle
+# =nil; chronicle
+
+<img src="https://github.com/zkAutochess/zkAutochess/raw/3155ff0bdc7b8415237f59ece3996a81168840f5/files/logo.png" alt="logo" width="500"/>
 
 ⚔️ =nil; chronicle is an autobattler game using zk to keep players' choices hidden from their oppononents.
 
@@ -16,7 +18,7 @@
 - [Team](#team)
 
 ## Diagram
-![diagram](https://docs.aztec.network/assets/ideal-img/uniswap_flow.38b8805.1030.png)
+![diagram](https://github.com/zkAutochess/zkAutochess/blob/3155ff0bdc7b8415237f59ece3996a81168840f5/files/schema.png)
 
 ## Links
 - [Devfolio]()
