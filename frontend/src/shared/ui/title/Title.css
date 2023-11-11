@@ -1,0 +1,11 @@
+.title {
+  font-family: "PixdorTwo";
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+}
+
+.title_size_l {
+  font-size: 48px;
+  font-weight: 500;
+}

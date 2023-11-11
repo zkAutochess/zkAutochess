@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "PixdorTwo";
+  src: url("./assets/fonts/PixdorTwo.ttf");
+  font-weight: 100, 200, 300, 400, 500, 600, 700, 800, 900, bold;
+}
+
+@font-face {
+  font-family: "Proto Mono";
+  src: url("./assets/fonts/ProtoMono-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Videotype";
+  src: url("./assets/fonts/videotype.otf");
+}
+
+body {
+  background: #0E0E0E;
+  margin: 0;
+  font-family: 'Proto Mono';
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
