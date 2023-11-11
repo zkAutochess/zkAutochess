@@ -1,0 +1,84 @@
+.wallet {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1D1D1D;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 8px;
+}
+.wallet-dropdown {
+  z-index: 1;
+  position: absolute;
+  width: 240px;
+  top: 70px;
+  background: #1D1D1D;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 5px;
+}
+.wallet-dropdown-item {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 16px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wallet-dropdown-item-left {
+  display: flex;
+  align-items: center;
+}
+.wallet-dropdown-item-icon {
+  display: flex;
+  margin-right: 8px;
+}
+.wallet-dropdown-item-address {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #FFFFFF;
+}
+.wallet-dropdown-item-actions {
+  display: flex;
+  align-items: center;
+}
+.wallet-dropdown-item-actions svg {
+  cursor: pointer;
+}
+.wallet-dropdown-item-actions svg:first-child {
+  margin-right: 8px;
+}
+.wallet-label {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #FFFFFF;
+}
+.wallet-icons {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+.wallet-icons svg:first-child {
+  z-index: 1;
+}
+.wallet-icons svg:nth-child(2) {
+  position: absolute;
+  left: 15px;
+  z-index: 0;
+}
+.wallet-action {
+  display: flex;
+  margin-left: 12px;
+}

@@ -3,6 +3,7 @@ import { Icons } from 'assets'
 import { Link } from 'react-router-dom'
 
 import './Header.css'
+import { Wallet } from 'widgets'
 
 const CnHeader = cn('header')
 
@@ -22,7 +23,9 @@ export const Header: React.FC<IHeaderProps> = () => {
                     Create room
                 </Link>
             </div>
-            <div className={CnHeader('wallet')}></div>
+            <div className={CnHeader('wallet')}>
+                <Wallet />
+            </div>
         </div>
     )
 }
