@@ -4,10 +4,10 @@
 #define BOARD_SIZE 8
 #define DOES_UNIT_HIT(to_hit, player)                     \
     if (is_empty(to_hit) || is_my_unit(to_hit, player)) { \
-        did_hit |= false;                                 \
+        did_hit = did_hit || false;                                 \
     } else {                                              \
         to_hit.hp -= 20;                                  \
-        did_hit |= true;                                  \
+        did_hit = did_hit || true;                                  \
     }
 
 struct __attribute__((packed)) Unit {
@@ -137,7 +137,7 @@ unsigned check_winner(Board &board) {
     }
 }
 
-[[circuit]] unsigned run_game(std::array<std::array<unsigned, BOARD_SIZE>, BOARD_SIZE / 2> player_one,
+[[circuit]] unsigned run_game(unsigned should_winner, std::array<std::array<unsigned, BOARD_SIZE>, BOARD_SIZE / 2> player_one,
                               std::array<std::array<unsigned, BOARD_SIZE>, BOARD_SIZE / 2>
                                   player_two) {
 
@@ -170,5 +170,7 @@ unsigned check_winner(Board &board) {
         all_units_hit(board);
         kill_dead_units(board);
     }
-    return check_winner(board);
+    unsigned is_winner = check_winner(board);
+    __builtin_assigner_exit_check(is_winner == should_winner);
+    return is_winner;
 }
