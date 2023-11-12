@@ -30,7 +30,7 @@
 ## Hackathon bounties
 
 #### =nil; Foundation - Solution example with zkLLVM
-We incorporate two ZKPs inside our infrastructure, both proofs written and generated with the =nil; toolchain. The first proof verifies that the players choos a valid strategy and computes a Poseidon hash of the input (with a nonce, and the player ID). The second proof is more involved, as it checks the outcome of the game. We reimplemented the game engine in C++ and compiled our circuit from it with zkLLVM.
+We incorporate two ZKPs inside our infrastructure, both proofs written and generated with the =nil; toolchain. The first proof verifies that the players chose a valid strategy and computes a Poseidon hash of the input (with a nonce, and the player ID). The second proof is more involved, as it checks the outcome of the game. We reimplemented the game engine in C++ and compiled our circuit from it with zkLLVM.
 
 We additionally tried to produce the EVM verifier from =nil; tooling but this did not fully work (we really tried).
 
