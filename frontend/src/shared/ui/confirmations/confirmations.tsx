@@ -2,7 +2,7 @@ import { Icons } from 'assets'
 import { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-const ConfirmationsWrapper = styled.div`
+const ConfirmationsWrapper = styled.div<{ color: string }>`
     position: fixed;
 
     top: 100px;
@@ -14,7 +14,7 @@ const ConfirmationsWrapper = styled.div`
     display: flex;
     align-items: center;
 
-    background-color: #edff21;
+    background-color: ${(props) => props.color};
 `
 
 const ConfirmationsLabel = styled.div`
@@ -41,7 +41,7 @@ export const Confirmations = () => {
     }, [])
 
     return (
-        <ConfirmationsWrapper>
+        <ConfirmationsWrapper color={text === 'Game verified on blockchain' ? '#A7FC00' : '#fff'}>
             {text !== 'Game verified on blockchain' && (
                 <Icons.Loader style={{ width: 50, height: 50 }} />
             )}
