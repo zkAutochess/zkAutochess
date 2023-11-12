@@ -1,3 +1,5 @@
+import { ValidConfig } from '../config'
+import { executeContractMethod, readFile, writeJsonFile } from '../prove'
 import { GameState, TeamEnum, Warrior, WarriorInput, WarriorState, WinnerEnum } from './game.interface'
 import fs from 'fs'
 
@@ -112,18 +114,27 @@ export class GameField {
     return teams.size <= 1 || !lastTickAction
   }
 
-  public runGame() {
+  public async runGame() {
     this.logField() // Log initial state
     let tickCount = 0
     let actionOccurred: boolean
 
     const fieldStateJsonArray = this.getFieldStateJsonArray()
-    fs.writeFile('file.json', JSON.stringify(fieldStateJsonArray), (err) => {
-      if (err) {
-        console.log('Error writing file', err)
-      }
-      console.log('JSON array is saved.')
-    })
+
+    if (ValidConfig.PROVE) {
+      await writeJsonFile('proove_init.json', fieldStateJsonArray)
+      const prove = await readFile('proove_result.json')
+
+      const txHex = await executeContractMethod({
+        blob: prove.blob,
+        init_params: prove.init_params,
+        columns_rotations: prove.columns_rotations,
+        public_input: prove.public_input,
+        gate_argument: prove.gate_argument,
+      })
+
+      console.log(`Send prove to contract: ${txHex}`)
+    }
 
     do {
       console.log(`Tick ${++tickCount}`)
@@ -195,15 +206,15 @@ export class GameRoom {
     this.playersCount++
   }
 
-  public startGame(): {
+  public async startGame(): Promise<{
     states: GameState[]
     winner: WinnerEnum
-  } {
+  }> {
     if (this.playersCount < 2) {
       throw new Error('Not enough players to start the game')
     }
 
-    this.gameField.runGame()
+    await this.gameField.runGame()
     return this.gameField.getGameStates()
   }
 
@@ -230,20 +241,20 @@ export class GameManager {
     return roomId
   }
 
-  public joinRoom(
+  public async joinRoom(
     roomId: string,
     playerId: string,
     warriors: WarriorInput[],
-  ): {
+  ): Promise<{
     states: GameState[]
     winner: WinnerEnum
-  } {
+  }> {
     if (!this.rooms[roomId]) {
       throw new Error('Room does not exist')
     }
 
     this.rooms[roomId].addPlayer(playerId, warriors, TeamEnum.Red)
-    return this.rooms[roomId].startGame()
+    return await this.rooms[roomId].startGame()
   }
 
   public getRoomState(roomId: string):
