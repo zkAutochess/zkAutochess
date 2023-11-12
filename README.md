@@ -4,7 +4,7 @@
 
 ⚔️ =nil; chronicle is an autobattler game using zk to keep players' choices hidden from their oppononents.
 
-⚙️ Built using [TODO], [TODO], Python and Flask.
+⚙️ Built using =nil; ZKLLVM, TypeScript and Solidity.
 
 - 🧾 **ZK proofs**: Players commit and hash their strategy privately on-chain.
 - ⛓️ **Smart contracts**: Verifies strategies and distributes tokens to winner.
