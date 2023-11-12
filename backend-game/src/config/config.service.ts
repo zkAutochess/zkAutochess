@@ -6,6 +6,10 @@ config()
 
 export const ValidConfig: IConfig = {
   PORT_HTTP: process.env.PORT_HTTP ? Number(process.env.PORT_HTTP) : DEFAULT_HTTP_PORT,
+  PROVE: process.env.PROVE ? Boolean(process.env.PROVE) : false,
+  RPC_URL: process.env.RPC_URL!,
+  PRIV_KEY: process.env.PRIV_KEY!,
+  CONTRACT_ADDRESS: process.env.CONTRACT_ADDRESS!,
 }
 
 const resultValidationConfig = configSchema.validate(ValidConfig)

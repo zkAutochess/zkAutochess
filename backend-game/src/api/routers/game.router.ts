@@ -19,7 +19,7 @@ ApiRoute.post('/room/:roomId/join', async (req, res, next) => {
     const { roomId } = req.params
     const { playerId, warriors } = req.body
 
-    const gameStates = gameManager.joinRoom(roomId, playerId, warriors) // Команда не требуется
+    const gameStates = await gameManager.joinRoom(roomId, playerId, warriors) // Команда не требуется
 
     gameStates.states.forEach((state) => {
       console.log(state.field.join('\n'))

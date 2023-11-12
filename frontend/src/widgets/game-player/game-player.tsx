@@ -1,6 +1,6 @@
 import { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { Game } from 'shared/types'
-import { CharacterPool, Person } from 'shared/ui'
+import { Person } from 'shared/ui'
 import styled from 'styled-components'
 import board from 'assets/images/board.png'
 
@@ -22,7 +22,7 @@ const GameBackground = styled.div`
 
 const wait = async (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
-export const GamePlayer: FC<{ data: Game }> = ({ data }) => {
+export const GamePlayer: FC<{ data: Game; setGameEnded: any }> = ({ data, setGameEnded }) => {
     const calculateBoard = (
         warriors: Array<{
             id: number
@@ -52,6 +52,10 @@ export const GamePlayer: FC<{ data: Game }> = ({ data }) => {
             const item = data.states[i].warriors
 
             const board = calculateBoard(item)
+
+            if (i == data.states.length - 1) {
+                setGameEnded(true)
+            }
 
             setBoard(board)
         }
@@ -91,7 +95,7 @@ const Cell = styled.div<{ disabled?: boolean; character_id?: string | number }>`
 
     color: #000;
 
-    cursor: ${(props) => (props.character_id ? 'not-allowed' : 'auto')};
+    cursor: ${(props) => (props.character_id || props.disabled ? 'not-allowed' : 'auto')};
 
     &:hover {
         // background-color: ${(props) => (props.disabled ? '#f0f0f0' : '#f0f0f0')};

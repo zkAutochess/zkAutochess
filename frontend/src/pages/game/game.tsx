@@ -1,6 +1,6 @@
-import { FC, useEffect, useMemo } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
-import { Title } from 'shared/ui'
+import { Confirmations, Title } from 'shared/ui'
 import { useParams } from 'react-router'
 import { useQuery } from 'react-query'
 import { getRoomState } from 'shared/api'
@@ -10,11 +10,14 @@ const CreateWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    min-height: 70vh;
 `
 
 var gamePlayerInterval: null | NodeJS.Timer = null
 
 export const Game: FC = () => {
+    const [gameEnded, setGameEnded] = useState(false)
     const { id } = useParams() as { id: string }
 
     const { data, refetch } = useQuery({
@@ -46,9 +49,23 @@ export const Game: FC = () => {
 
     return (
         <CreateWrapper>
-            <Title>Room - {id}</Title>
+            <Title>
+                Room - {id}.{' '}
+                {gameEnded
+                    ? data && data.winner !== 3
+                        ? `Player ${data.winner} won!`
+                        : `Draw!`
+                    : null}
+            </Title>
 
-            {isStarted && data ? <GamePlayer data={data} /> : <Title>Waiting enemy</Title>}
+            {isStarted && data ? (
+                <>
+                    <GamePlayer setGameEnded={setGameEnded} data={data} />
+                    {gameEnded && <Confirmations />}
+                </>
+            ) : (
+                <Title>Waiting enemy</Title>
+            )}
         </CreateWrapper>
     )
 }
