@@ -6,8 +6,8 @@
 
 ⚙️ Built using =nil; ZKLLVM, TypeScript and Solidity.
 
-- 🧾 **ZK proofs**: Players commit and hash their strategy privately on-chain.
-- ⛓️ **Smart contracts**: Verifies strategies and distributes tokens to winner.
+- 🧾 **ZK proofs**: Players compute proof that they use a valid strategy and commit to their strategy on-chain. Central Server obtains strategies and determines winner with another ZKP.
+- ⛓️ **Smart contracts**: Verifies strategies and winner. After that it distributes tokens to winner (Soon™).
 - 🖼️ **Frontend**: Game is generated in browser based on strategies.
 
 ## Contents
@@ -30,7 +30,10 @@
 ## Hackathon bounties
 
 #### =nil; Foundation - Solution example with zkLLVM
-[TODO]
+We incorporate two ZKPs inside our infrastructure, both proofs written and generated with the =nil; toolchain. The first proof verifies that the players choos a valid strategy and computes a Poseidon hash of the input (with a nonce, and the player ID). The second proof is more involved, as it checks the outcome of the game. We reimplemented the game engine in C++ and compiled our circuit from it with zkLLVM.
+
+We additionally tried to produce the EVM verifier from =nil; tooling but this did not fully work (we really tried).
+
 #### Scroll - ZK dapp
 Our smart contract is deployed on the Scroll testnet.
 - [Smart contract deployment](https://sepolia.scrollscan.com/address/0x1819c40b652e59c335b67e2b2e461e1a98fa20df)
