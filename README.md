@@ -18,7 +18,7 @@
 - [Team](#team)
 
 ## Diagram
-![diagram](https://github.com/zkAutochess/zkAutochess/blob/3155ff0bdc7b8415237f59ece3996a81168840f5/files/schema.png)
+![diagram](https://github.com/zkAutochess/zkAutochess/blob/6423819e59e02654b2e04413f7c4d5ecaeed3555/files/schema-red.png)
 
 ## Links
 - [Deployed game](https://zkhack-frontend-7n5nl.ondigitalocean.app/)
@@ -30,7 +30,7 @@
 ## Hackathon bounties
 
 #### =nil; Foundation - Solution example with zkLLVM
-We incorporate two ZKPs inside our infrastructure, both proofs written and generated with the =nil; toolchain. The first proof verifies that the players choos a valid strategy and computes a Poseidon hash of the input (with a nonce, and the player ID). The second proof is more involved, as it checks the outcome of the game. We reimplemented the game engine in C++ and compiled our circuit from it with zkLLVM.
+We incorporate two ZKPs inside our infrastructure, both proofs written and generated with the =nil; toolchain. The first proof verifies that the players chose a valid strategy and computes a Poseidon hash of the input (with a nonce, and the player ID). The second proof is more involved, as it checks the outcome of the game. We reimplemented the game engine in C++ and compiled our circuit from it with zkLLVM.
 
 We additionally tried to produce the EVM verifier from =nil; tooling but this did not fully work (we really tried).
 
