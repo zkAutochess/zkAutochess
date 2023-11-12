@@ -22,7 +22,7 @@
 
 ## Links
 - [Deployed game](https://zkhack-frontend-7n5nl.ondigitalocean.app/)
-- [Devfolio]()
+- [Devfolio](https://devfolio.co/projects/nil-chronicle-a5de)
 - [Presentation slides]()
 - [Demo video]()
 - [Deployed contract on Scroll]()
