@@ -6,8 +6,8 @@
 
 ⚙️ Built using =nil; ZKLLVM, TypeScript and Solidity.
 
-- 🧾 **ZK proofs**: Players commit and hash their strategy privately on-chain.
-- ⛓️ **Smart contracts**: Verifies strategies and distributes tokens to winner.
+- 🧾 **ZK proofs**: Players compute proof that they use a valid strategy and commit to their strategy on-chain. Central Server obtains strategies and determines winner with another ZKP.
+- ⛓️ **Smart contracts**: Verifies strategies and winner. After that it distributes tokens to winner (Soon™).
 - 🖼️ **Frontend**: Game is generated in browser based on strategies.
 
 ## Contents
