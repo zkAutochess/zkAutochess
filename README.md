@@ -21,7 +21,9 @@
 ![diagram](https://github.com/zkAutochess/zkAutochess/blob/3155ff0bdc7b8415237f59ece3996a81168840f5/files/schema.png)
 
 ## Links
+- [Deployed game](https://zkhack-frontend-7n5nl.ondigitalocean.app/)
 - [Devfolio]()
+- [Presentation slides]()
 - [Demo video]()
 - [Deployed contract on Scroll]()
 - [Deployed contract on Mantle]()
@@ -35,8 +37,8 @@
 ## Team
 This project was build at ZK Hack Istanbul 2023 by:
 
-- [name]()
-- [name]()
+- [Alexey Kalmykov](https://twitter.com/0xlexx)
+- [Timur Bartenev](https://www.linkedin.com/in/thrmdy/)
 - [Themis](https://twitter.com/TACEO_IO)
 - [Alexandr Kolesnik](https://t.me/KoshkenS)
 - [arjanjohan](https://x.com/arjanjohan/)
