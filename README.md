@@ -30,7 +30,10 @@
 ## Hackathon bounties
 
 #### =nil; Foundation - Solution example with zkLLVM
-[TODO]
+We incorporate two ZKPs inside our infrastructure, both proofs written and generated with the =nil; toolchain. The first proof verifies that a single player chooses a valid strategy and computes a Poseidon hash of the input (with a nonce, and the player ID). The second proof is more involved, as it checks the outcome of the game. We reimplemented the game engine in C++ and compiled our circuit from it with zkLLVM.
+
+We additionally tried to produce the EVM verifier from =nil; tooling but this did not fully work (we really tried).
+
 #### Scroll - ZK dapp
 Our smart contract is deployed on the Scroll testnet.
 - [Smart contract deployment](https://sepolia.scrollscan.com/address/0x1819c40b652e59c335b67e2b2e461e1a98fa20df)
