@@ -31,10 +31,10 @@ const Cell = styled.div<{ disabled?: boolean; character_id?: string | number }>`
 
     color: #fff;
 
-    cursor: ${(props) => (props.character_id ? 'not-allowed' : 'auto')};
+    cursor: ${(props) => (props.character_id || props.disabled ? 'not-allowed' : 'auto')};
+    // background-color: ${(props) => (props.disabled ? 'gray' : 'black')};
 
     &:hover {
-        // background-color: ${(props) => (props.disabled ? '#000' : '#f0f0f0')};
     }
 `
 

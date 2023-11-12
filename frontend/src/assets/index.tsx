@@ -8,6 +8,7 @@ import { ReactComponent as Copy } from './icons/copy.svg'
 import { ReactComponent as Check } from './icons/check.svg'
 import { ReactComponent as ArrowRight } from './icons/arrow-right.svg'
 import { ReactComponent as Twitter } from './icons/twitter.svg'
+import { ReactComponent as Loader } from './icons/loader.svg'
 
 export const Icons = {
     AngleLeft,
@@ -20,4 +21,5 @@ export const Icons = {
     Check,
     ArrowRight,
     Twitter,
+    Loader,
 }
