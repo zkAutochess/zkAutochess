@@ -18,7 +18,7 @@
 - [Team](#team)
 
 ## Diagram
-![diagram](https://github.com/zkAutochess/zkAutochess/blob/3155ff0bdc7b8415237f59ece3996a81168840f5/files/schema.png)
+![diagram](https://github.com/zkAutochess/zkAutochess/blob/6423819e59e02654b2e04413f7c4d5ecaeed3555/files/schema-red.png)
 
 ## Links
 - [Deployed game](https://zkhack-frontend-7n5nl.ondigitalocean.app/)
