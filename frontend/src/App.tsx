@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { Create, Game, Home, Join } from 'pages'
 import { QueryClientProvider, QueryClient } from 'react-query'
 import styled from 'styled-components'
-import { Header } from 'shared/ui'
+import { Header, Social } from 'shared/ui'
 import { PrivyProvider } from '@privy-io/react-auth'
 
 import './App.css'
@@ -25,6 +25,7 @@ function App() {
                             <Route path="/game/:id" element={<Game />} />
                             <Route path="/join/:id" element={<Join />} />
                         </Routes>
+                        <Social />
                     </AppWrapper>
                 </BrowserRouter>
             </QueryClientProvider>

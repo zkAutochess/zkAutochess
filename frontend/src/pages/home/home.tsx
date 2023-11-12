@@ -8,6 +8,8 @@ import { Button, Title } from 'shared/ui'
 const HomeWrapper = styled.div`
     display: flex;
     flex-direction: column;
+
+    min-height: 70vh;
 `
 
 const RoomsContainer = styled.div`
