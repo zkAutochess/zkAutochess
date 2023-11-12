@@ -24,15 +24,23 @@
 - [Deployed game](https://zkhack-frontend-7n5nl.ondigitalocean.app/)
 - [Devfolio](https://devfolio.co/projects/nil-chronicle-a5de)
 - [Presentation slides]()
-- [Demo video]()
-- [Deployed contract on Scroll]()
-- [Deployed contract on Mantle]()
+- [Deployed contract on Scroll](https://sepolia.scrollscan.com/address/0x1819c40b652e59c335b67e2b2e461e1a98fa20df)
+- [Deployed contract on Mantle](https://explorer.testnet.mantle.xyz/address/0x6d377A53dF4e7E73913F460A1E4D2787C867232F)
 
-- 
 ## Hackathon bounties
-- Scroll - ZK dapp
-- ZK dApp on Mantle
-- =nil; Foundation - Solution example with zkLLVM
+
+#### =nil; Foundation - Solution example with zkLLVM
+[TODO]
+#### Scroll - ZK dapp
+Our smart contract is deployed on the Scroll testnet.
+- [Smart contract deployment](https://sepolia.scrollscan.com/address/0x1819c40b652e59c335b67e2b2e461e1a98fa20df)
+- [Circuit verification transaction](https://sepolia.scrollscan.com/tx/0x92f16416d6dd2048dbadccd6144fdc2501931dad7ca2a10ae81acc234e761a95)
+
+As you can see the transaction is still pending after 12+ hours due to some issues with Scroll testnet.
+#### ZK dApp on Mantle
+Our smart contract is deployed on the Mantle testnet.
+- [Smart contract deployment](https://explorer.testnet.mantle.xyz/address/0x6d377A53dF4e7E73913F460A1E4D2787C867232F)
+- [Circuit verification transaction](https://explorer.testnet.mantle.xyz/tx/0xde09596ad82de4ff8a1d96e18f65b9faccfcef2f070794ddcfb928aaa226b336)
 
 ## Team
 This project was build at ZK Hack Istanbul 2023 by:
